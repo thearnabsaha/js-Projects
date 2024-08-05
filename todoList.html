@@ -3,9 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TODO LISTS</title>
 </head>
 <body>
-    
+    <div class="todolist">
+        <form action="" class="form">
+            <input type="text" placeholder="Input Your Todos">
+            <button type="submit" class="add">Add</button>
+            <button class="clear">Clear All</button>
+        </form>
+        <div class="list">
+            <div class="todo">
+                <p>1. Arnab</p>
+                <button class="done">Done</button>
+                <button class="remove">Remove</button>
+            </div>
+            <div class="todo">
+                <p>1. Arnab</p>
+                <button class="done">Done</button>
+                <button class="remove">Remove</button>
+            </div>
+            <div class="todo">
+                <p>1. Arnab</p>
+                <button class="done">Done</button>
+                <button class="remove">Remove</button>
+            </div>
+            <div class="todo">
+                <p>1. Arnab</p>
+                <button class="done">Done</button>
+                <button class="remove">Remove</button>
+            </div>
+            <div class="todo">
+                <p>1. Arnab</p>
+                <button class="done">Done</button>
+                <button class="remove">Remove</button>
+            </div>
+        </div>
+    </div>
+    <style>
+        body{
+            font-family: 'Courier New', Courier, monospace;
+            background-color: lightgreen;
+            display: flex;
+            justify-content: center;
+            .todo{
+                p{
+                list-style: none;
+                font-size: 1.5rem;
+                background-color: lightgoldenrodyellow;
+                display: inline-block;
+                padding: .5rem;
+                width: 500px;
+                text-align: start;
+                border: 1px solid #313131;
+                border-radius: .3rem;
+                }
+                button{
+                    font-size: 1.2rem;
+                    padding: .5rem;
+                    cursor: pointer;
+                    margin: .5rem;
+                    border: 1px solid #313131;
+                    border-radius: .3rem;
+                    color: #313131;
+                }
+                .remove{
+                    background-color: lightpink;
+                    &:hover{
+                        background-color: rgb(250, 143, 159);
+                    }
+                }
+                .done{
+                    background-color: lightblue;
+                    &:hover{
+                        background-color: rgb(141, 206, 227);
+                    }
+                }
+            }
+            
+            form{
+                margin-top: 3rem;
+                input{
+                    font-size: 1.2rem;
+                    padding: .5rem;
+                    width: 500px;
+                    border-radius: .3rem;
+                    border: 1px solid #313131;
+                }
+                button{
+                    font-size: 1.2rem;
+                    padding: .5rem;
+                    cursor: pointer;
+                    margin: .5rem;
+                    border: 1px solid #313131;
+                    border-radius: .3rem;
+                    color: #313131;
+                }
+                .clear{
+                    background-color: lightpink;
+                    &:hover{
+                        background-color: rgb(250, 143, 159);
+                    }
+                }
+                .add{
+                    background-color: lightblue;
+                    &:hover{
+                        background-color: rgb(141, 206, 227);
+                    }
+                }
+            }
+        }
+    </style>
 </body>
 </html>
