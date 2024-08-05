@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+</head>
+<body>
+    <div class="game">
+        <h1>Rules</h1>
+        <p>Try and guess the number between 0 and 100</p>
+        <p>You have total 10 attempts to guess the right number</p>
+        <h1>Guess The Number</h1>
+        <form action="">
+            <input type="text" placeholder="Guess a Number" class="input">
+            <button type="submit" class="submit">Submit</button>
+        </form>
+        <h3 class="prevGuesses">Previous Guess: </h3>
+        <h3 class="chances">guess remaining : 10</h3>
+        <h2 class="guess"></h2>
+        <div class="btns">
+            <button class="new">New Game</button>
+        </div>
+    </div>
+    <style>
+        body{
+            font-family: 'Courier New', Courier, monospace;
+            background-color: lightgoldenrodyellow;
+            width: 700px;
+            margin: auto;
+            text-align: center;
+            .game{
+                margin-top: 5rem;
+                form{
+                    input{
+                        font-size: 1.2rem;
+                        padding: .5rem;
+                    }
+                    button{
+                        border: none;
+                        outline: none;
+                        font-size: 1.2rem;
+                        padding: .5rem 1rem;
+                        border-radius: .2rem;
+                        border: 1px solid #313131;
+                        background-color: lightgreen;
+                        color: #313131;
+                        cursor: pointer;
+                    }
+                }
+                .btns{
+                    button{
+                        border: none;
+                        outline: none;
+                        font-size: 1.2rem;
+                        padding: .5rem 1rem;
+                        border-radius: .2rem;
+                        border: 1px solid #313131;
+                        background-color: lightgreen;
+                        color: #313131;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    </style>
+    <script>
+        const randomNumber=(Math.random()*100).toFixed(0)
+        let chances=10;
+        let previousGuess=[]
+        //by clicking Enter
+        document.querySelector("input").addEventListener("keydown",(key)=>{
+            if(key==="Enter"){
+                gameLogic()
+            }
+        })
+        //by clicking Submit Button
+        document.querySelector(".submit").addEventListener("click",(e)=>{
+            e.preventDefault()
+            gameLogic()
+        })
+        //new game
+        document.querySelector(".new").addEventListener("click",(e)=>{
+                e.preventDefault()
+                window.location.reload()
+            })
+        //game logic 
+        function gameLogic(){
+            //get and parse the input
+            const input=parseInt(document.querySelector(".input").value)
+            validateGuess(input)
+            gaemOver()
+            //clear input
+            document.querySelector(".input").value=""
+        }
+        //validate guess
+        function validateGuess(input){
+            if(input=="",isNaN(input)){
+                document.querySelector(".guess").innerHTML=`Type a number atleast ;)`
+            }if(input>randomNumber && input<=100){
+                document.querySelector(".guess").innerHTML="Guess is High"
+                decreaseChances(input)
+            }else if(input<randomNumber&& input>=0){
+                document.querySelector(".guess").innerHTML="Guess is Low"
+                decreaseChances(input)
+            }else if(input<0 || input>100){
+                document.querySelector(".guess").innerHTML="Give valid input"
+            }else if(input==randomNumber){
+                document.querySelector(".guess").innerHTML=`The Winning Number was : ${input}`
+                document.querySelector(".input").setAttribute("disabled","")
+                document.body.style.backgroundColor="lightgreen"
+                document.querySelector(".submit").style.backgroundColor="lightblue"
+                document.querySelector(".new").style.backgroundColor="lightblue"
+                document.querySelector(".submit").setAttribute("disabled","")
+            }
+        }
+        //decrease chances
+        function decreaseChances(input){
+            chances--
+                document.querySelector(".chances").innerHTML=`The remming guesses are : ${chances}`;
+                previousGuess.push(input)
+                document.querySelector(".prevGuesses").innerHTML=`Previous Guess: ${previousGuess}`
+        }
+        //game over
+        function gaemOver(){
+            if(chances==0){
+                document.querySelector(".guess").innerHTML=`Game Over! Your lose! Number was ${randomNumber}`
+                document.body.style.backgroundColor="lightpink"
+                document.querySelector(".submit").setAttribute("disabled","")
+                document.querySelector(".input").setAttribute("disabled","")
+                document.querySelector(".submit").style.backgroundColor="lightblue"
+            }
+        }
+    </script>
+</body>
+</html>

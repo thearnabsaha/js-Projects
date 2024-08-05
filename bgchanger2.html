@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Changer In Every Second</title>
+</head>
+<body>
+    <h1>The background color will change in every second! </h1>
+    <button class="start">Start</button>
+    <button class="stop">Stop</button>
+    <style>
+        body{
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            margin-top: 10rem;
+            button{
+                border-radius: .5rem;
+                border: 1px solid #313131;
+                cursor: pointer;
+                font-size: 1.5rem;
+                padding: .5rem 2rem;
+            }
+        }
+    </style>
+    <script>
+        let myinterval;
+        document.querySelector(".start").addEventListener("click",(e)=>{
+            myinterval=setInterval(() => {
+                const r= ((Math.random()*255).toFixed(0))
+                const g= ((Math.random()*255).toFixed(0))
+                const b= ((Math.random()*255).toFixed(0))
+                const randomColor= `rgb(${r},${g},${b})`            
+                document.body.style.backgroundColor=randomColor;
+            }, 1000);
+            document.querySelector(".start").setAttribute("disabled","")
+            myinterval()
+        })
+        document.querySelector(".stop").addEventListener("click",()=>{
+            document.querySelector(".start").removeAttribute("disabled")
+            clearInterval(myinterval)
+        })
+    </script>
+</body>
+</html>

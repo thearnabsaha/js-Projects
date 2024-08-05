@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changer</title>
+</head>
+<body>
+    <div class="boxs">
+        <div class="box" id="blue"></div>
+        <div class="box" id="black"></div>
+        <div class="box" id="white"></div>
+        <div class="box" id="orange"></div>
+        <div class="box" id="pink"></div>
+    </div>
+    <h1>Click to a box to change the backgroud</h1>
+    <style>
+        h1{
+            font-family: 'Courier New', Courier, monospace;
+            color: gray;
+            text-align: center;
+        }
+        .boxs{
+            width: 60vw;
+            margin: auto;
+            margin-top: 4rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            .box{
+                border: 2px solid gray;
+                width: 100px;
+                height: 100px;
+                cursor: pointer;
+            }
+        }
+        #pink{
+            background-color: pink;
+        }
+        #black{
+            background-color: black;
+        }
+        #white{
+            background-color: white;
+        }
+        #orange{
+            background-color: orange;
+        }
+        #blue{
+            background-color: blue;
+        }
+    </style>
+    <script>
+        const box=document.querySelectorAll(".box")
+        box.forEach((i)=>{
+            i.addEventListener("click",(e)=>{
+                // document.body.style.backgroundColor=e.target.id;        //you need id for this
+                // console.log(window.getComputedStyle(i).getPropertyValue('background-color'));
+                document.body.style.backgroundColor=window.getComputedStyle(i).getPropertyValue('background-color') //you don't need id for this
+            })
+        })
+    </script>
+</body>
+</html>

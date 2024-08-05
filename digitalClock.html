@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+</head>
+<body>
+    <h1>This is Your Digital Clock</h1>
+    <p class="clock"></p>
+    <style>
+        body{
+            background-color: #313131;
+            color: aliceblue;
+            font-family: 'Courier New', Courier, monospace;
+            h1{
+                text-align: center;
+                margin-top: 4rem;
+            }
+            p{
+                color: gray;
+                font-size: 2rem;
+                text-align: center;
+                border-radius: .5rem;
+                width: 250px;
+                margin: auto;
+                padding: 1rem;
+                background-color: lightgoldenrodyellow;
+            }
+        }
+    </style>
+    <script>
+        setInterval(() => {
+            const time= new Date().toLocaleTimeString()
+            document.querySelector(".clock").innerHTML=time
+        }, 1000);
+    </script>
+</body>
+</html>
